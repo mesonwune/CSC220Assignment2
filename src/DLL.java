@@ -205,15 +205,19 @@ public class DLL {
     }
 
     public void reverseList() {
+        //checking to see that the list isn't empty or only
+        //one node
         if(isEmpty() || size == 1)
         {
             return;
         }
 
+        //keep track of my current, previous, and next node
         DLLNode curr = head;
         DLLNode next;
         DLLNode prev = null;
 
+        //move through nodes changing next to prev
         while(curr != null)
         {
             next = curr.next;
@@ -226,8 +230,9 @@ public class DLL {
 
     public void mergeLists(DLL one, DLL two)
     {
-
+        //create finalList
         DLL finalList = new DLL();
+        //return if one or both of the lists are empty
         if (one.isEmpty() && two.isEmpty()) {
             return;
         } else if (one.isEmpty() && !two.isEmpty()) {
@@ -241,14 +246,19 @@ public class DLL {
             DLLNode pointer1 = one.head;
             DLLNode pointer2 = two.head;
 
+            //make sure that both isn't null, or stop running
             while (pointer1 != null && pointer2 != null) {
+                //if pointer1 is bigger, add it
                 if (pointer1.data < pointer2.data || pointer2 == null) {
                     finalList.pushBack(pointer1.data);
                     pointer1 = pointer1.next;
-                } else if (pointer2.data < pointer1.data || pointer1 == null) {
+                }
+                //if pointer2 is bigger, add it
+                else if (pointer2.data < pointer1.data || pointer1 == null) {
                     finalList.pushBack(pointer2.data);
                     pointer2 = pointer2.next;
                 }
+                //if both are equal, add both
                 else
                 {
                     finalList.pushBack(pointer1.data);
@@ -258,6 +268,7 @@ public class DLL {
                 }
             }
         }
+        //point head to finalList's head
         head = finalList.head;
     }
 }

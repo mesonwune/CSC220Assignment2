@@ -8,21 +8,25 @@ public class Testing {
     public static void main(String [] args) {
         Scanner reader = new Scanner(System.in);
         char choice = 'a';
+        //does the user want to use single or double linked list
         System.out.println("a. Single Linked List   b. Double Linked List");
         System.out.print("What kind of list do you want to work with? (a/b) ");
         choice = reader.next().charAt(0);
         if (choice == 'a') {
             SLL list1;
+            //does head hold any data?
             System.out.print("Do you want to store a value? (y/n) ");
             choice = reader.next().charAt(0);
             if (choice == 'y') {
+                //if yes, then create list that holds data in head
                 list1 = new SLL(needDoubleValue(reader));
                 list1.printList(list1.getHead());
             } else {
+                //or create list with head.data == null
                 list1 = new SLL();
                 list1.printList(list1.getHead());
             }
-
+            //the menu the user can choose from
             while (choice != 'q') {
                 System.out.println("a. pushFront    b. popFront    c.pushBack\n"
                         + "d. popBack    e. insert    f. size\n"
@@ -32,6 +36,7 @@ public class Testing {
                 System.out.print("Please type in the letter of the function you want: ");
                 choice = reader.next().charAt(0);
 
+                //based on what the user chooses, run the method or break the loop
                 switch (choice) {
                     case 'a':
                         list1.pushFront(needDoubleValue(reader));
@@ -50,6 +55,7 @@ public class Testing {
                         list1.printList(list1.getHead());
                         break;
                     case 'e':
+                        //ask for user input for the value and index
                         System.out.print("Please choose an index: ");
                         int index = reader.nextInt();
                         System.out.print("Please choose a value: ");
@@ -61,6 +67,7 @@ public class Testing {
                         System.out.println("List size: " + list1.size());
                         break;
                     case 'g':
+                        //ask for user input for the value
                         System.out.println("Need a value.");
                         value = needDoubleValue(reader);
                         list1.deleteDuplicates(value);
@@ -71,15 +78,18 @@ public class Testing {
                         list1.printList(list1.getHead());
                         break;
                     case 'i':
+                        //ask for user input for the index
                         System.out.println("Need an index.");
                         index = reader.nextInt();
                         list1.mtoLastElement(index);
                         list1.printList(list1.getHead());
                         break;
                     case 'j':
+                        //create a new list so we can merge
                         SLL list2 = new SLL();
                         value = 0;
                         System.out.println("Keep entering values. To exit, enter -1.");
+                        //have loop run to add values to list
                         while (value != -1) {
                             value = reader.nextDouble();
                             if (value != -1) {
@@ -88,6 +98,7 @@ public class Testing {
                                 break;
                             }
                         }
+                        //show the lists,  merge them, and show the final list
                         System.out.print("List 1: ");
                         list1.printList(list1.getHead());
                         System.out.print("List 2: ");
@@ -103,14 +114,19 @@ public class Testing {
             }
         } else if (choice == 'b') {
             DLL list1;
+            //does head hold any data?
             System.out.print("Do you want to store a value? (y/n) ");
             choice = reader.next().charAt(0);
             if (choice == 'y') {
+                //if yes, then create list with data
                 list1 = new DLL(needIntValue(reader));
+                list1.printList(list1.getHead());
             } else {
+                //or create list with head.data == null
                 list1 = new DLL();
+                list1.printList(list1.getHead());
             }
-
+            //the menu the user can choose from
             while (choice != 'q') {
                 System.out.println("a. pushFront    b. popFront    c.pushBack\n"
                         + "d. popBack    e. insert    f. size\n"
@@ -120,6 +136,7 @@ public class Testing {
                 System.out.print("Please type in the letter of the function you want: ");
                 choice = reader.next().charAt(0);
 
+                //based on what the user chooses, run the method or break the loop
                 switch (choice) {
                     case 'a':
                         list1.pushFront(needIntValue(reader));
@@ -138,6 +155,7 @@ public class Testing {
                         list1.printList(list1.getHead());
                         break;
                     case 'e':
+                        //ask for user input for the value and index
                         System.out.print("Please choose an index: ");
                         int index = reader.nextInt();
                         System.out.print("Please choose a value: ");
@@ -149,6 +167,7 @@ public class Testing {
                         System.out.println("List size: " + list1.size());
                         break;
                     case 'g':
+                        //ask for user input for the value
                         System.out.println("Need a value.");
                         value = needIntValue(reader);
                         list1.deleteDuplicates(value);
@@ -159,15 +178,18 @@ public class Testing {
                         list1.printList(list1.getHead());
                         break;
                     case 'i':
+                        //ask for user input for the index
                         System.out.println("Need an index.");
                         index = reader.nextInt();
                         list1.mtoLastElement(index);
                         list1.printList(list1.getHead());
                         break;
                     case 'j':
+                        //create a new list so we can merge
                         DLL list2 = new DLL();
                         value = 0;
                         System.out.println("Keep entering values. To exit, enter -1.");
+                        //have loop run to add values to list
                         while (value != -1) {
                             value = reader.nextInt();
                             if (value != -1) {
@@ -176,6 +198,8 @@ public class Testing {
                                 break;
                             }
                         }
+
+                        //show the lists,  merge them, and show the final list
                         System.out.print("List 1: ");
                         list1.printList(list1.getHead());
                         System.out.print("List 2: ");
@@ -193,8 +217,7 @@ public class Testing {
         }
     }
 
-
-
+    //a method to call a int value so I don't repeat code
     public static int needIntValue(Scanner scanner)
     {
         System.out.print("Please type in a number");
@@ -202,6 +225,7 @@ public class Testing {
         return value;
     }
 
+    //a method to call a double value so I don't repeat code
     public static double needDoubleValue(Scanner scanner)
     {
         System.out.print("Please type in a number");

@@ -203,6 +203,7 @@ public class SLL {
         SLLNode next;
         SLLNode prev = null;
 
+        //move through nodes changing next to prev
         while (curr != null) {
             next = curr.next;
             curr.next = prev;
@@ -214,7 +215,10 @@ public class SLL {
 
     public void mergeLists(SLL one, SLL two) {
 
+        //create finalList
         SLL finalList = new SLL();
+
+        //return if one or both of the lists are empty
         if (one.isEmpty() && two.isEmpty()) {
             return;
         } else if (one.isEmpty() && !two.isEmpty()) {
@@ -228,14 +232,19 @@ public class SLL {
             SLLNode pointer1 = one.head;
             SLLNode pointer2 = two.head;
 
+            //make sure that both isn't null, or stop running
             while (pointer1 != null && pointer2 != null) {
+                //if pointer1 is bigger, add it
                 if (pointer1.data < pointer2.data || pointer2 == null) {
                     finalList.pushBack(pointer1.data);
                     pointer1 = pointer1.next;
-                } else if (pointer2.data < pointer1.data || pointer1 == null) {
+                }
+                //if pointer2 is bigger, add it
+                else if (pointer2.data < pointer1.data || pointer1 == null) {
                     finalList.pushBack(pointer2.data);
                     pointer2 = pointer2.next;
                 }
+                //if both are equal, add both
                 else
                 {
                     finalList.pushBack(pointer1.data);
@@ -245,6 +254,7 @@ public class SLL {
                 }
             }
         }
+        //point head to finalList's head
         head = finalList.head;
     }
 }
